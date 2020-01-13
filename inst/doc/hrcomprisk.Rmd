@@ -1,0 +1,91 @@
+---
+title: "Introduction to hrcomprisk"
+author: "Ng D, Antiporta DA, Matheson M, Munoz A"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette_1}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  fig.width = 10,
+  fig.height = 8
+)
+```
+
+# hrcomprisk: Nonparametric Assessment of Differences Between Competing Risks Hazards
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+This package aims to estimate Nonparametric Cumulative-Incidence Based Estimation of the Ratios of Sub-Hazard Ratios to Cause-Specific Hazard Ratios.
+
+## Installation
+
+You can install the version 0.1.0 of `hrcomprisk` from [Github](https://github.com) with:
+
+``` r
+library(devtools)
+install_github("AntiportaD/hrcomprisk")
+```
+
+## Using a formatted data set to apply the `hrcomprsk` package
+
+You can use the dataset provided by the authors from the [CKiD study](https://statepi.jhsph.edu/ckid/), wich has the necessary variables to run the package.
+
+```{r example}
+library(hrcomprisk)
+data <- hrcomprisk::dat_ckid
+dim(data) #dimensions
+names(data) #varible names
+```
+
+The package will create a `data.frame` object with the cumulative incidence of each competing risk for each exposure group. We can use the `CRCumInc` fuction.
+
+```{r CRCumInc_example}
+mydat.CIF<-CRCumInc(df=data, time=exit, event=event, exposed=b1nb0, print.attr=T)
+```
+
+## Using a the output to create Plots of CIFs and the Ratio of Hazard Ratios (Rk) 
+
+We can also obtain two different plots using the `plotCIF` function: 
+
+1. The Cumulative Incidence of the both events of interest overall and by exposure level, and 
+2. The ratios of Hazard rations (sub-distribution Hazard Ratio and cause-specific Hazard Ratio) by event.
+
+```{r plotCIF}
+plots<-plotCIF(cifobj=mydat.CIF, maxtime = 20, eoi = 1)
+```
+
+## Bootstrapping the data to get 95% Confidence Intervals for the Ratio of Hazard Ratios (Rk) 
+
+In order to get confidence intervals to the ratio of Hazard Ratios (Rk), we can use the `bootCRCumInc` function:
+```{r boot_example}
+ciCIF<-bootCRCumInc(df=data, exit=exit, event=event, exposure=b1nb0, rep=100, print.attr=T)
+```
+
+Finally, we can use this new data to add the 95% Confidence Intervals to the previous plot using again the `plotCIF` function.
+
+```{r plot_ci}
+plotCIF(cifobj=mydat.CIF, maxtime= 20, ci=ciCIF)
+```
+
+## The wrapper function `npcrest` 
+
+The package also offers a wrapper function (`npcrest`) to do all this analyses in one step.
+
+```{r npcrest}
+npcrest(df=data, exit=exit, event=event, exposure=b1nb0,rep=100, maxtime=20, print.attr=T)
+```
+
+## References
+
+1. Ng D, Antiporta DA, Matheson M, Munoz A. Nonparametric assessment of differences between competing risks hazard ratios: application to racial differences in pediatric chronic kidney disease progression. Clinical Epidemiology, 2020 (in press)
+2. Muñoz A, Abraham AG, Matheson M, Wada N. In: Risk Assessment and Evaluation of Predictions. Lee MLT, Gail M, Pfeiffer R, Satten G, Cai T, Gandy A, editor. New York: Springer; 2013. Non-proportionality of hazards in the competing risks framework; pp. 3–22. [Google Scholar](https://link.springer.com/chapter/10.1007/978-1-4614-8981-8_1)
