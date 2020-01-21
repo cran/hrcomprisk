@@ -1,6 +1,6 @@
 #' Bootstrap for Ratios of Hazard Ratios
 #'
-#' @description Bootstrap 95% Confidence Intervals limits for estimated Ratios of sHR/csHR.
+#' @description Bootstrap 95\% Confidence Intervals limits for estimated Ratios of sHR/csHR.
 #' @param df A data frame containing, at a minimum, exit, event, and exposure.
 #' @param exit Name of the column in df containing times of event or censoring.
 #' @param event Name of the column in df containing codes for censoring (0) and event types (1-4). Analysis of more than 4 competing events is not supported by this function.
@@ -9,15 +9,17 @@
 #' @param weights Name of the column in df containing user-supplied weights. If ipwvars is utilized, this argument is ignored.
 #' @param ipwvars A vector of names of columns in `df` containing predictor variables for building a propensity score model for exposure and creating standardized inverse probability weights using this model. Overrides the weights argument.
 #' @param rep Number of replicates for bootstrapping if confidence intervals for the sHR/csHR estimate are desired. See more details on bootstrapping below.
-#' @param print.attr A `TRUE/FALSE`` statement if results needed to be returned in console.
+#' @param print.attr A logical indicator for whether results should be returned in console.
 #' @param seed A seed number start for the bootstrap estimation.
 #' @importFrom "stats" "approx" "as.formula" "glm" "predict" "quantile" "sd" "stepfun"
-#' @return A data frame with the 95% confidence interval limits (upper and lower) for
+#' @return A data frame with the 95\% confidence interval limits (upper and lower) for
 #' Sub-hazard ratio/Cause-specific hazard ratio for each event:
-#' @return \code{R1.lower}     Lower limit of the 95%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 1 at time \code{t}.
-#' @return \code{R1.upper}     Upper limit of the 95%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 1 at time \code{t}
-#' @return \code{R2.lower}     Lower limit of the 95%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 2 at time \code{t}
-#' @return \code{R2.upper}     Upper limit of the 95%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 2 at time \code{t}
+#' \describe{
+#'   \item{R1.lower}{Lower limit of the 95\%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 1 at time \code{t}}
+#'   \item{R1.upper}{Upper limit of the 95\%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 1 at time \code{t}}
+#'   \item{R2.lower}{Lower limit of the 95\%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 2 at time \code{t}}
+#'   \item{R2.upper}{Upper limit of the 95\%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 2 at time \code{t}}
+#' }
 #' @examples
 #' #data from the package
 #' data <- hrcomprisk::dat_ckid

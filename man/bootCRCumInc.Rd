@@ -34,24 +34,22 @@ bootCRCumInc(
 
 \item{rep}{Number of replicates for bootstrapping if confidence intervals for the sHR/csHR estimate are desired. See more details on bootstrapping below.}
 
-\item{print.attr}{A `TRUE/FALSE`` statement if results needed to be returned in console.}
+\item{print.attr}{A logical indicator for whether results should be returned in console.}
 
 \item{seed}{A seed number start for the bootstrap estimation.}
 }
 \value{
-A data frame with the 95% confidence interval limits (upper and lower) for
+A data frame with the 95\% confidence interval limits (upper and lower) for
 Sub-hazard ratio/Cause-specific hazard ratio for each event:
-
-\code{R1.lower}     Lower limit of the 95%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 1 at time \code{t}.
-
-\code{R1.upper}     Upper limit of the 95%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 1 at time \code{t}
-
-\code{R2.lower}     Lower limit of the 95%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 2 at time \code{t}
-
-\code{R2.upper}     Upper limit of the 95%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 2 at time \code{t}
+\describe{
+  \item{R1.lower}{Lower limit of the 95\%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 1 at time \code{t}}
+  \item{R1.upper}{Upper limit of the 95\%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 1 at time \code{t}}
+  \item{R2.lower}{Lower limit of the 95\%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 2 at time \code{t}}
+  \item{R2.upper}{Upper limit of the 95\%CI of the Sub-hazard ratio/Cause-specific hazard ratio for event 2 at time \code{t}}
+}
 }
 \description{
-Bootstrap 95% Confidence Intervals limits for estimated Ratios of sHR/csHR.
+Bootstrap 95\% Confidence Intervals limits for estimated Ratios of sHR/csHR.
 }
 \examples{
 #data from the package

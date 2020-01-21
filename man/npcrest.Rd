@@ -39,28 +39,21 @@ npcrest(
 
 \item{eoi}{Event number for the event of interest, useful when more than two events exist. If utilized, only two cumulative incidence curves will be plotted: one for the event of interest, and one for the composite of all competing events. Each event will still have its sHR/csHR ratio plotted.}
 
-\item{print.attr}{A logical value \code{TRUE/FALSE} if results needed to be returned in console.}
+\item{print.attr}{A logical indicator for whether results should be returned in console.}
 }
 \value{
 An object containing the plotted figures (\code{$plots}) and a data frame (\code{$cuminc}) with the following columns:
-
-\code{event}    Type of event that occurs at the given time.
-
-\code{exposure}    Exposure group in which the event happens.
-
-\code{time}     Time of the event.
-
-\code{CIoinc_comp}    Value of the unexposed (denoted by “o”) composite cumulative incidence at the given time.
-
-\code{CIxinc_comp}    Value of the exposed (denoted by “x”) composite cumulative incidence at the given time.
-
-\code{CIoinc_1}      Value of the unexposed cumulative incidence of event 1 at the given time.
-
-\code{CIxinc_1}    Value of the exposed cumulative incidence of event 1 at the given time.
-
-\code{R_1}     Sub-hazard ratio/Cause-specific hazard ratio for event 1.
-
-\code{R_2}     Sub-hazard ratio/Cause-specific hazard ratio for event 2.
+\describe{
+  \item{event}{Type of event that occurs at the given time.}
+  \item{exposure}{Exposure group in which the event happens.}
+  \item{time}{Time of the event.}
+  \item{CIoinc_comp}{Value of the unexposed (denoted by “o”) composite cumulative incidence at the given time.}
+  \item{CIxinc_comp}{Value of the exposed (denoted by “x”) composite cumulative incidence at the given time.}
+  \item{CIoinc_1}{Value of the unexposed cumulative incidence of event 1 at the given time.}
+  \item{CIxinc_1}{Value of the exposed cumulative incidence of event 1 at the given time.}
+  \item{R_1}{Sub-hazard ratio/Cause-specific hazard ratio for event 1.}
+  \item{R_2}{Sub-hazard ratio/Cause-specific hazard ratio for event 2.}
+}
 }
 \description{
 A comprehensive wrapper function for implementing the competing risks diagnostic of Ng, Antiporta, Matheson and Muñoz (2019) to compare sub-hazard ratio (a la Fine and Gray; sHR) and cause-specific hazard ratio (csHR) approaches. While doing either analysis individually involves parametric or semi-parametric estimation, because of the fact that the derivatives of the cumulative incidences involved in the quantities cancel out when their ratio is considered, this ratio can be characterized completely using nonparametric estimates of the event-specific cumulative incidences. This provides a useful diagnostic when both analyses are performed as well as a method for estimating the sub-hazard ratios in a way that is valid and free of tethering assumptions characterized by Muñoz et al. (2013).

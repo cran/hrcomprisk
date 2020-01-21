@@ -30,28 +30,21 @@ CRCumInc(
 
 \item{ipwvars}{A vector of names of columns in `df` containing predictor variables for building a propensity score model for exposure and creating standardized inverse probability weights using this model. Overrides the weights argument.}
 
-\item{print.attr}{A logical value `TRUE/FALSE` if results needed to be returned in console.}
+\item{print.attr}{A logical indicator for whether results should be returned in console.}
 }
 \value{
 A data frame with the following columns:
-
-\code{event}    Type of event that occurs at the given time.
-
-\code{exposure}    Exposure group in which the event happens.
-
-\code{time}     Time of the event.
-
-\code{CIoinc_comp}    Value of the unexposed (denoted by “o”) composite cumulative incidence at the given time.
-
-\code{CIxinc_comp}    Value of the exposed (denoted by “x”) composite cumulative incidence at the given time.
-
-\code{CIoinc_1}      Value of the unexposed cumulative incidence of event 1 at the given time.
-
-\code{CIxinc_1}    Value of the exposed cumulative incidence of event 1 at the given time.
-
-\code{R_1}     Sub-hazard ratio/Cause-specific hazard ratio for event 1.
-
-\code{R_2}     Sub-hazard ratio/Cause-specific hazard ratio for event 2.
+\describe{
+  \item{event}{Type of event that occurs at the given time.}
+  \item{exposure}{Exposure group in which the event happens.}
+  \item{time}{Time of the event.}
+  \item{CIoinc_comp}{Value of the unexposed (denoted by “o”) composite cumulative incidence at the given time.}
+  \item{CIxinc_comp}{Value of the exposed (denoted by “x”) composite cumulative incidence at the given time.}
+  \item{CIoinc_1}{Value of the unexposed cumulative incidence of event 1 at the given time.}
+  \item{CIxinc_1}{Value of the exposed cumulative incidence of event 1 at the given time.}
+  \item{R_1}{Sub-hazard ratio/Cause-specific hazard ratio for event 1.}
+  \item{R_2}{Sub-hazard ratio/Cause-specific hazard ratio for event 2.}
+}
 }
 \description{
 Estimation of Cumulative Incidence Functions (CIF) of competing events.

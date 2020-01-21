@@ -1,12 +1,7 @@
 #' Data Check for Wrapper Function
 #'
-#' Data needs to be of class: dataframe
-#' Data in Long format (1 row per ID)
-#' Package needs at LEAST colnames without any specific order:
-#' 		 "exposure" : binary (0, 1), numeric
-#' 		 "entry"	: continuous, numeric
-#' 		 "exit"		: continuous, numeric
-#' 		 "event"	: binary (>0), numeric
+#' A function to ensure that the data frame fulfills the relevant variable content and type requirements.
+#'
 #' @param df A data frame containing, at a minimum, exit, event, and exposure.
 #' @param qexit Name of the column in df containing times of event or censoring.
 #' @param qevent Name of the column in df containing codes for censoring (0) and event types (1-4). Analysis of more than 4 competing events is not supported by this function.

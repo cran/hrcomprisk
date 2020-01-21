@@ -18,20 +18,19 @@
 #' @param maxtime Largest time to display on the x-axis of all output plots. As data can become sparse and thus more widely variable at times get large, this argument may be used to restrict plots to a range of the data that is discerned to be more accurate and reliable.
 #' @param rep Number of replicates for bootstrapping if confidence intervals for the sHR/csHR estimate are desired. See more details on bootstrapping below.
 #' @param eoi Event number for the event of interest, useful when more than two events exist. If utilized, only two cumulative incidence curves will be plotted: one for the event of interest, and one for the composite of all competing events. Each event will still have its sHR/csHR ratio plotted.
-#' @param print.attr A logical value \code{TRUE/FALSE} if results needed to be returned in console.
-#' @importFrom "grDevices"  "gray"
-#' @importFrom "graphics" "abline" "axis" "box" "lines" "mtext" "par" "plot" "text"
-#' @importFrom "stats" "approx" "as.formula" "glm" "predict" "quantile" "sd" "stepfun"
+#' @param print.attr A logical indicator for whether results should be returned in console.
 #' @return An object containing the plotted figures (\code{$plots}) and a data frame (\code{$cuminc}) with the following columns:
-#' @return \code{event}    Type of event that occurs at the given time.
-#' @return \code{exposure}    Exposure group in which the event happens.
-#' @return \code{time}     Time of the event.
-#' @return \code{CIoinc_comp}    Value of the unexposed (denoted by “o”) composite cumulative incidence at the given time.
-#' @return \code{CIxinc_comp}    Value of the exposed (denoted by “x”) composite cumulative incidence at the given time.
-#' @return \code{CIoinc_1}      Value of the unexposed cumulative incidence of event 1 at the given time.
-#' @return \code{CIxinc_1}    Value of the exposed cumulative incidence of event 1 at the given time.
-#' @return \code{R_1}     Sub-hazard ratio/Cause-specific hazard ratio for event 1.
-#' @return \code{R_2}     Sub-hazard ratio/Cause-specific hazard ratio for event 2.
+#' \describe{
+#'   \item{event}{Type of event that occurs at the given time.}
+#'   \item{exposure}{Exposure group in which the event happens.}
+#'   \item{time}{Time of the event.}
+#'   \item{CIoinc_comp}{Value of the unexposed (denoted by “o”) composite cumulative incidence at the given time.}
+#'   \item{CIxinc_comp}{Value of the exposed (denoted by “x”) composite cumulative incidence at the given time.}
+#'   \item{CIoinc_1}{Value of the unexposed cumulative incidence of event 1 at the given time.}
+#'   \item{CIxinc_1}{Value of the exposed cumulative incidence of event 1 at the given time.}
+#'   \item{R_1}{Sub-hazard ratio/Cause-specific hazard ratio for event 1.}
+#'   \item{R_2}{Sub-hazard ratio/Cause-specific hazard ratio for event 2.}
+#' }
 #' @references
 #'
 #'1. Ng D, Antiporta DA, Matheson M, Munoz A. Nonparametric assessment of differences between competing risks hazard ratios: application to racial differences in pediatric chronic kidney disease progression. (Clinical Epidemiology, 2019-in print)
@@ -43,6 +42,9 @@
 #' data <- hrcomprisk::dat_ckid
 #' #Using the wrapper function
 #' npcrest(df=data, exit=exit, event=event, exposure=b1nb0,rep=10, maxtime=20, print.attr=TRUE)
+#' @importFrom "grDevices"  "gray"
+#' @importFrom "graphics" "abline" "axis" "box" "lines" "mtext" "par" "plot" "text"
+#' @importFrom "stats" "approx" "as.formula" "glm" "predict" "quantile" "sd" "stepfun"
 #' @export
 npcrest <- function (df, exit, event, exposure, entry = NULL, weights = NULL, ipwvars=NULL, maxtime = Inf, rep = NULL, eoi = -1, print.attr=T)
 {

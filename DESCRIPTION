@@ -1,7 +1,7 @@
 Package: hrcomprisk
 Type: Package
 Title: Nonparametric Assessment Between Competing Risks Hazard Ratios
-Version: 0.1.0
+Version: 0.1.1
 Author: Daniel Antiporta <dantiporta@jhu.edu>; 
         Matthew Matheson <mmathes4@jhu.edu>;
         Derek Ng <dng@jhu.edu>;
@@ -19,6 +19,6 @@ BugReports: https://github.com/AntiportaD/hrcomprisk/issues
 Suggests: knitr, rmarkdown, testthat
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-01-11 17:48:09 UTC; antiporta
+Packaged: 2020-01-21 19:49:00 UTC; antiporta
 Repository: CRAN
-Date/Publication: 2020-01-13 17:30:02 UTC
+Date/Publication: 2020-01-21 20:10:02 UTC

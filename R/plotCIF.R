@@ -6,13 +6,15 @@
 #' @param ci A dataframe containing the 95\% CI for each ratio of csHR/sHR.
 #' @param eoi Event number for the event of interest, useful when more than two events exist.
 #' @return A large list containing 2 figures:
-#' @return \code{$plot1}        Plot the cumulative incidence of the composite event and of each event by exposure group
-#' @return \code{$plot2}        Plot the ratio of Sub-hazard ratio and Cause-specific hazard ratio for each event i (Ri)
+#' \describe{
+#'   \item{$plot1 }{  Plot the cumulative incidence of the composite event and of each event by exposure group.}
+#'   \item{$plot2 }{  Plot the ratio of Sub-hazard ratio and Cause-specific hazard ratio for each event i (Ri).}
+#' }
 #' @examples
 #' #data from the package
 #' data <- hrcomprisk::dat_ckid
 #' #Estimate the Cumulative Incidence Functions and Ratios of sHR and csHR
-#' mydat.CIF<-CRCumInc(df=data, time=exit, event=event, exposed=b1nb0, print.attr=TRUE)
+#' mydat.CIF<-CRCumInc(df=data, time=exit, event=event, exposed=b1nb0, print.attr=FALSE)
 #' #Plot the CIs and Ratios estimated
 #' plots<-plotCIF(cifobj=mydat.CIF, maxtime = 20, eoi = 1)
 #' @importFrom "grDevices" "gray" "recordPlot"

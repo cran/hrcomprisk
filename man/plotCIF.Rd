@@ -17,10 +17,10 @@ plotCIF(cifobj, maxtime = Inf, ci = NULL, eoi = -1)
 }
 \value{
 A large list containing 2 figures:
-
-\code{$plot1}        Plot the cumulative incidence of the composite event and of each event by exposure group
-
-\code{$plot2}        Plot the ratio of Sub-hazard ratio and Cause-specific hazard ratio for each event i (Ri)
+\describe{
+  \item{$plot1 }{  Plot the cumulative incidence of the composite event and of each event by exposure group.}
+  \item{$plot2 }{  Plot the ratio of Sub-hazard ratio and Cause-specific hazard ratio for each event i (Ri).}
+}
 }
 \description{
 Plot Cumulative Incidence and Ratio of sHR/csHR.
@@ -29,7 +29,7 @@ Plot Cumulative Incidence and Ratio of sHR/csHR.
 #data from the package
 data <- hrcomprisk::dat_ckid
 #Estimate the Cumulative Incidence Functions and Ratios of sHR and csHR
-mydat.CIF<-CRCumInc(df=data, time=exit, event=event, exposed=b1nb0, print.attr=TRUE)
+mydat.CIF<-CRCumInc(df=data, time=exit, event=event, exposed=b1nb0, print.attr=FALSE)
 #Plot the CIs and Ratios estimated
 plots<-plotCIF(cifobj=mydat.CIF, maxtime = 20, eoi = 1)
 }

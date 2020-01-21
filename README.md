@@ -13,12 +13,15 @@ Ratios.
 
 ## Installation
 
-You can install the version 0.1.0 of `hrcomprisk` from
-[Github](https://github.com) with:
+You can install the latest version of `hrcomprisk` in CRAN or the
+development version from [Github](https://github.com):
 
 ``` r
-library(devtools)
-install_github("AntiportaD/hrcomprisk")
+# Install hrcomprisk from CRAN
+install.packages("hrcomprisk")
+# Or the development version from GitHub:
+# install.packages("devtools")
+devtools::install_github("AntiportaD/hrcomprisk")
 ```
 
 ## Using a formatted data set to apply the `hrcomprsk` package
@@ -32,11 +35,10 @@ library(hrcomprisk)
 data <- hrcomprisk::dat_ckid
 dim(data) #dimensions
 #> [1] 626  13
-names(data) #varible names
-#>  [1] "b1nb0"        "event"        "male1fe0"     "incomelt30"  
-#>  [5] "incomegt75"   "lps"          "foodassist"   "public"      
-#>  [9] "matedultcoll" "privatemd"    "entry"        "exit"        
-#> [13] "inckd"
+names(data) #variable names
+#>  [1] "b1nb0"        "event"        "male1fe0"     "incomelt30"   "incomegt75"  
+#>  [6] "lps"          "foodassist"   "public"       "matedultcoll" "privatemd"   
+#> [11] "entry"        "exit"         "inckd"
 ```
 
 The package will create a `data.frame` object with the cumulative
@@ -59,9 +61,9 @@ mydat.CIF<-CRCumInc(df=data, time=exit, event=event, exposed=b1nb0, print.attr=T
 
 We can also obtain two different plots using the `plotCIF` function:
 
-1.  The Cumulative Incidence of the both events of interest overall and
-    by exposure level, and
-2.  The ratios of Hazard rations (sub-distribution Hazard Ratio and
+1.  The Cumulative Incidence of both events of interest, overall and by
+    exposure level, and
+2.  The ratios of Hazard ratios (sub-distribution Hazard Ratio and
     cause-specific Hazard Ratio) by
 event.
 
@@ -100,7 +102,7 @@ plotCIF(cifobj=mydat.CIF, maxtime= 20, ci=ciCIF)
 
 ## The wrapper function `npcrest`
 
-The package also offers a wrapper function (`npcrest`) to do all this
+The package also offers a wrapper function (`npcrest`) to do all these
 analyses in one
 step.
 
@@ -128,7 +130,8 @@ npcrest(df=data, exit=exit, event=event, exposure=b1nb0,rep=100, maxtime=20, pri
 1.  Ng D, Antiporta DA, Matheson M, Munoz A. Nonparametric assessment of
     differences between competing risks hazard ratios: application to
     racial differences in pediatric chronic kidney disease progression.
-    Clinical Epidemiology, 2020 (in press)
+    Clinical Epidemiology, 2020. [Link to
+    Journal](https://doi.org/10.2147/CLEP.S225763)
 2.  Muñoz A, Abraham AG, Matheson M, Wada N. In: Risk Assessment and
     Evaluation of Predictions. Lee MLT, Gail M, Pfeiffer R, Satten G,
     Cai T, Gandy A, editor. New York: Springer; 2013.

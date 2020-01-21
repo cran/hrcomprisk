@@ -27,11 +27,5 @@ datcheck(df, qexit, qevent, qexposure, qentry, qweights, qipwvars, eoi = -1)
 Check dataset
 }
 \description{
-Data needs to be of class: dataframe
-Data in Long format (1 row per ID)
-Package needs at LEAST colnames without any specific order:
-		 "exposure" : binary (0, 1), numeric
-		 "entry"	: continuous, numeric
-		 "exit"		: continuous, numeric
-		 "event"	: binary (>0), numeric
+A function to ensure that the data frame fulfills the relevant variable content and type requirements.
 }
